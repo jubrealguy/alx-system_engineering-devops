@@ -1,0 +1,2 @@
+#!/bin/bash
+at list | sort | uniq | pr | lpr
