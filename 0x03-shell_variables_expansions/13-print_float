@@ -1,2 +1,2 @@
 #!/bin/bash
-l
+echo $NUM.{01..99} | tr " " "\n"
