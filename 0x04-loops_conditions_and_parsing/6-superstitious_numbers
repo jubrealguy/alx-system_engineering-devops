@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This displays 1-20 but "bad luck from China" at 4th and "bad luck from Japan"
+# at 7th and "bad luck from Italy" at 17th
+
+a=1
+while [ "$a" -le 20 ]
+do
+	if [ "$a" -eq 4 ]; then
+		echo "bad luck from China"
+	elif [ "$a" -eq 9 ]; then
+		echo "bad luck from Japan"
+	elif [ "$a" -eq 17 ]; then
+		echo "bad luck from Italy"
+	else
+		echo "$a"
+	fi
+	(( a++ ))
+done
