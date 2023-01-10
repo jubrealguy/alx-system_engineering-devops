@@ -2,5 +2,5 @@
 # exec and pkill must be used
 
 exec { 'pkill killmenow':
-command => 'usr/bin/pkill -f killmenow',
+command => '/usr/bin/pkill -f killmenow',
 }
