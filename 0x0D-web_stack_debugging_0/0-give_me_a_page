@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Fixed curl error message by starting the APACHE server
+
+sudo service apache2 start
