@@ -4,9 +4,8 @@
 
 sudo apt-get update
 sudo apt-get install -y nginx
-
 sudo ufw allow "Nginx HTTP"
-echo 'Ceci n'"'"'est pas une page' | sudo tee /var/www/html/404.html
+echo 'Ceci n'"'"'est pas une page' | sudo tee /var/www/html/404.htm
 sudo sed -i '/server_name _;/a \
     \terror_page 404 /404.html; \
     \tlocation  /xyz { \
