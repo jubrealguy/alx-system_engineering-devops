@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-# Installs Nginx with the following configurations:
-#+    Listens on port 80.
+# Configure nginx to have a custom 404 page
 
-sudo apt-get update
-sudo apt-get install -y nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 sudo ufw allow "Nginx HTTP"
-echo 'Ceci n'"'"'est pas une page' | sudo tee /var/www/html/404.htm
+echo 'Ceci n'"'"'est pas une page' | sudo tee /var/www/html/404.html
 sudo sed -i '/server_name _;/a \
     \terror_page 404 /404.html; \
     \tlocation  /xyz { \
