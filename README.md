@@ -1,1 +1,1 @@
-A repo for shell basics
+A repo for DevOps 
