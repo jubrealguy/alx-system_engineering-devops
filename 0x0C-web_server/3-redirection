@@ -5,8 +5,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow "Nginx HTTP"
 echo "Hello World" | sudo tee /var/www/html/index.html
-
-redirected_url = "https://www.youtube.com/watch?v=QH2-TGUlwu4"
+redirected_url="https://www.youtube.com/watch?v=QH2-TGUlwu4"
 sudo sed -i "/server_name _;/a \\
     \tlocation /redirect_me { \\
         \treturn 301 $redirected_url; \\
