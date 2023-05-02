@@ -10,7 +10,7 @@ sudo apt-get install -y haproxy
 
 # Make sure HAproxy can be managed via an init script
 sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
-
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
 # Configure to include roundrobin and two servers
 sudo sed -i "\$a $CFG" /etc/haproxy/haproxy.cfg
 
