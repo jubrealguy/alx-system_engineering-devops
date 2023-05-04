@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+if ! systemctl status nginx | grep -q "active (running)"; then
+  echo "Nginx is not running"
+  exit 1
+fi
