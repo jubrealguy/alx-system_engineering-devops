@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Bash script that will display information about subdomains.
+
+show_records ()
+{
+    printf "The subdomain %s is a " "$2"
+    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ printf $4 }'
+    printf " record and points to "
+    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ printf $5 }'
+    echo ""
+}
+
+if [ -z "$2" ]; then
+   for subdom in "www" "lb-01" "web-01" "web-02"
+   do
+       show_records "$1" "$subdom"
+   done
+else
+    show_records "$1" "$2"
+fi
