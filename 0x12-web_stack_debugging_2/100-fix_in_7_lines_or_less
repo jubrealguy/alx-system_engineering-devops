@@ -14,4 +14,4 @@ sudo chmod 644 /etc/nginx/nginx.conf
 pkill apache2
 
 # Start nginx
-sudo service nginx start
+sudo -u nginx service nginx start
