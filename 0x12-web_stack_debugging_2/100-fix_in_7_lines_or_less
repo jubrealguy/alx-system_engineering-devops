@@ -1,17 +1,7 @@
 #!/usr/bin/env bash
 # A Bash script that configures the container to run on nginx, listen on port 8080
-
-# Change the user www-data to user nginx in the nginx config file
 sudo sed -i "s/user www-data/user nginx/" /etc/nginx/nginx.conf
-
-# Change 80 to 8080 and make it global
 sudo sed -i "s/80/8080/g" /etc/nginx/sites-available/default
-
-# Change permissions for the file
 sudo chmod 644 /etc/nginx/nginx.conf
-
-# Stop apache server
 pkill apache2
-
-# Start nginx
 sudo -u nginx service nginx start
