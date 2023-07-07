@@ -2,27 +2,12 @@
 # Configure server with HAproxy
 # Distribute requests using a roundrobin algorithm
 
-sudo apt-get update
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.5
+sudo apt-get -y update
+
+# Install HAProxy
 sudo apt-get -y install haproxy
-sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
-sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOF
-global
-    daemon
-    maxconn 100
-
-defaults
-    mode http
-    timeout client 5000ms
-    timeout connect 5000ms
-    timeout server 5000ms
-
-listen appname
-    bind 0.0.0.0:80
-    mode http
-    balance roundrobin
-    option httpclose
-    option forwardfor
-    server 91997-web-01 100.25.119.249:80 check
-    server 91997-web-02 52.204.59.44:80 check
-EOF
-sudo service haproxy start
+sudo sed -i -e '$aENABLED=1\n' /etc/default/haproxy
+sudo sed -i -e '$a\listen http-in\n\tbind :80\n\tbalance roundrobin\n\tserver 75346-web-01 54.237.113.103:80 check\n\tserver 75346-web-02 54.160.115.199:80 check\n' /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
