@@ -5,14 +5,14 @@ from sys import argv
 import csv
 
 if __name__ == "__main__":
-    user_id = argv[1]
+    USER_ID = argv[1]
     url = "https://jsonplaceholder.typicode.com/"
     user = requests.get(url + "users/{}".format(argv[1])).json()
-    username = user.get("username")
-    todos = requests.get(url + "todos", params={"userId": user_id}).json()
+    USERNAME = user.get("username")
+    todos = requests.get(url + "todos", params={"userId": USER_ID}).json()
 
-    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
+    with open("{}.csv".format(USER_ID), "w", newline="") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         [writer.writerow(
-            [user_id, username, todo.get("completed"), todo.get("title")]
+            [USER_ID, USERNAME, todo.get("completed"), todo.get("title")]
          ) for todo in todos]
